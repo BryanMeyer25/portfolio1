@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio - Bryan</title>
+
+  <!-- Fonte Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, #000000 0%, #003300 100%);
+      color: #b8deb8;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #050805;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 999;
+      border-bottom: 1px solid #1a4d1a;
+      box-shadow: 0 0 10px #4caf5077;
+    }
+
+    nav a {
+      color: #4caf50;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #a5d6a7;
+    }
+
+    header {
+      text-align: center;
+      margin-top: 1rem;
+      padding: 2rem 1.5rem 0;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      color: #4caf50;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 8px #4caf50;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #82c782;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      color: #4caf50;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #4caf50;
+      padding-bottom: 0.3rem;
+      width: max-content;
+      text-shadow: 0 0 5px #4caf50;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #a5d6a7;
+      font-weight: 400;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .skill {
+      background: #113311;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 700;
+      color: #a5d6a7;
+      box-shadow: 0 0 8px #4caf5088;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+
+    .skill:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #4caf50cc;
+    }
+
+    .projects-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: #102010;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #4caf5088;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px #4caf50cc;
+    }
+
+    .project-card h3 {
+      color: #4caf50;
+      text-shadow: 0 0 6px #4caf50;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #a5d6a7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid #1a4d1a;
+      font-size: 0.9rem;
+      color: #82c782;
+      background-color: #050805;
+      font-weight: 400;
+    }
+
+    #toggle-theme {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 0.6rem 0.8rem;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 0 10px #4caf50aa;
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+
+    #toggle-theme:hover {
+      background: #388e3c;
+      transform: scale(1.1);
+    }
+
+    body.light-mode {
+      background: linear-gradient(135deg, #f0fdf0, #c8f7c8);
+      color: #003300;
+    }
+
+    body.light-mode nav {
+      background: #dcedc8;
+      border-bottom: 1px solid #a5d6a7;
+      box-shadow: 0 0 10px #81c784aa;
+    }
+
+    body.light-mode nav a {
+      color: #2e7d32;
+    }
+
+    body.light-mode nav a:hover {
+      color: #33691e;
+    }
+
+    body.light-mode header h1,
+    body.light-mode h2 {
+      color: #2e7d32;
+      text-shadow: none;
+    }
+
+    body.light-mode header p,
+    body.light-mode p,
+    body.light-mode .project-card p {
+      color: #2e7d32;
+    }
+
+    body.light-mode .skill {
+      background: #e8f5e9;
+      color: #1b5e20;
+      box-shadow: 0 0 6px #66bb6a;
+    }
+
+    body.light-mode .project-card {
+      background: #f1f8e9;
+      box-shadow: 0 0 6px #81c784;
+    }
+
+    body.light-mode .project-card h3 {
+      color: #2e7d32;
+      text-shadow: none;
+    }
+
+    body.light-mode footer {
+      background-color: #dcedc8;
+      color: #33691e;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      main {
+        margin: 1rem;
+        padding: 0 1rem;
+      }
+      .skills-list {
+        justify-content: center;
+      }
+    }
+
+    /* Animações */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.aparecendo {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Botão de tema -->
+<button id="toggle-theme">🌙</button>
+
+<!-- MENU FIXO -->
+<nav><i>
+  <a href="#sobre">Sobre Mim</a>
+  <a href="#habilidades">Habilidades</a>
+  <a href="#hobbies">Hobbies</a>
+  <a href="#projetos">Projetos</a>
+</nav>
+
+<header class="fade-in">
+  <h1>Bryan Mickael Meyer</h1>
+  <p>Desenvolvedor Web | Especialista em tecnologia e design</p>
+</header>
+
+<main>
+  <section id="sobre" class="fade-in">
+    <h2>Sobre Mim</h2>
+    <p>Olá! Eu sou o Bryan, estudante do Cedup Perfeito Manoel De Aguiar, onde estou cursando Técnico em Informática. Sempre fui apaixonado por tecnologia, e meu maior objetivo é aprender a desenvolver jogos. Estou em constante evolução, buscando aprender mais sobre programação, design e tudo que envolve o universo dos games.</p>
+  </section>
+
+  <section id="habilidades" class="fade-in">
+    <h2>Habilidades</h2>
+    <div class="skills-list">
+      <div class="skill">HTML5</div>
+      <div class="skill">Inglês fluente</div>
+      <div class="skill">Músico</div>
+    </div>
+  </section>
+
+  <section id="hobbies" class="fade-in">
+    <h2>Hobbies</h2>
+    🎸 Tocar guitarra<br><br>
+    
+    💻 Pesquisar sobre tecnologias em geral<br><br>
+
+    🎮 Jogar videogame<br>
+  </section>
+
+  <section id="projetos" class="fade-in">
+    <h2>Projetos concluídos</h2>
+    <div class="projects-list">
+      <a href="#" class="project-card" target="_blank">
+        <h3>💡 Hackatoon</h3>
+        <p>Participei do Hackatoon, uma maratona de programação voltada para inovação e soluções criativas. Foi uma experiência incrível de trabalho em equipe, aprendizado rápido e resolução de problemas em tempo real.</p>
+      </a>
+      <a href="#" class="project-card" target="_blank">
+        <h3>FindTrash</h3>
+        <p>O FindTrash é um aplicativo que desenvolvi junto com meu grupo para ajudar comunidades afetadas pelo acúmulo de lixo nas ruas, especialmente após enchentes.</p>
+      </a>
+      <a href="#" class="project-card" target="_blank">
+        <h3>Desafio da VIVO</h3>
+        <p>Participei do Desafio da VIVO, um evento nacional onde equipes resolvem questionários desafiadores para alcançar a final.</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="fade-in">
+  &copy; 2025 Bryan Mickael Meyer. Todos os direitos reservados.
+</footer>
+
+<!-- Scripts -->
+<script>
+  // Tema claro/escuro
+  const btn = document.getElementById("toggle-theme");
+  btn.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    btn.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
+  });
+
+  // Fade-in nas seções
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('aparecendo');
+        observador.unobserve(entrada.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach((el) => observador.observe(el));
+</script>
+</i>
+</body>
+</html>
